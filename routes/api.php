@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -12,3 +13,4 @@ Route::get('/user', function (Request $request) {
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:5,5');
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:api');
+Route::post('/order', [OrderController::class,'order'])->middleware('auth:api');
